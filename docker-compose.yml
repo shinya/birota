@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: dbadmin
+      MYSQL_USER: cake
+      MYSQL_PASSWORD: cake
+      MYSQL_DATABASE: cake
+    volumes:
+      - "db_storage:/var/lib/mysql"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=cake
+      - PMA_PASSWORD=cake
+    links:
+      - db
+    ports:
+      - 8080:80
+    volumes:
+      - /sessions
+  php7:
+    image: php:7.2-apache
+    environment:
+      TZ: "Asia/Tokyo"
+    volumes:
+      - "${PWD}:/var/www/html"
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - 10080:80
+volumes:
+  db_storage:
