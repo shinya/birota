@@ -1,6 +1,12 @@
 version: '3.1'
 
 services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
   db:
     image: mariadb
     restart: always
@@ -11,6 +17,7 @@ services:
       MYSQL_DATABASE: cake
     volumes:
       - "db_storage:/var/lib/mysql"
+      - ${PWD}/docker/mariadb:/etc/mysql/conf.d
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
@@ -24,8 +31,11 @@ services:
       - 8080:80
     volumes:
       - /sessions
-  php7:
-    image: php:7.2-apache
+    environment:
+      - VIRTUAL_HOST=pma.local
+  birota:
+    image: cake3
+    build: docker/php
     environment:
       TZ: "Asia/Tokyo"
     volumes:
@@ -36,5 +46,8 @@ services:
       - db
     ports:
       - 10080:80
+    environment:
+      - VIRTUAL_HOST=birota.local
+
 volumes:
   db_storage:
