@@ -24,6 +24,7 @@ use Cake\View\View;
  */
 class AppView extends View
 {
+	public $_ext = '.php';
 
     /**
      * Initialization hook method.
