@@ -1,25 +1,21 @@
+.idea/
+.c9/
+
 # CakePHP 3
 
-/vendor/*
-/config/app.php
+bitora/vendor/*
+birota/config/app.php
 
-/tmp/cache/models/*
-!/tmp/cache/models/empty
-/tmp/cache/persistent/*
-!/tmp/cache/persistent/empty
-/tmp/cache/views/*
-!/tmp/cache/views/empty
-/tmp/sessions/*
-!/tmp/sessions/empty
-/tmp/tests/*
-!/tmp/tests/empty
+birota/tmp/cache/models/*
+!birota/tmp/cache/models/empty
+birota/tmp/cache/persistent/*
+!birota/tmp/cache/persistent/empty
+birota/tmp/cache/views/*
+!birota/tmp/cache/views/empty
+birota/tmp/sessions/*
+!birota/tmp/sessions/empty
+birota/tmp/tests/*
+!birota/tmp/tests/empty
 
-/logs/*
-!/logs/empty
-
-# CakePHP 2
-
-/app/tmp/*
-/app/Config/core.php
-/app/Config/database.php
-/vendors/*
+birota/logs/*
+!birota/logs/empty
