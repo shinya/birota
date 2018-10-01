@@ -49,7 +49,7 @@ services:
     environment:
       - VIRTUAL_HOST=birota.local
   cloud9:
-    image: shinya/alpine-cloud9
+    image: sshinya/alpine-cloud9
     volumes:
       - "${PWD}:/workspace"
     environment:
